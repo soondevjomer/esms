@@ -30,6 +30,6 @@ public class AuthenticationController {
             HttpServletResponse response
     ) {
 
-        return null;
+        return ResponseEntity.ok(authenticationService.refreshToken(request, response));
     }
 }
