@@ -15,13 +15,13 @@ devtools:
   add-properties: false
 logging:
   level:
-    org.springframework: debug
+    org.springframework: info
 
 application:
   security:
     jwt:
       secretKey: ec8f63b5685486211ef07fb0c9110df80e56df7ffc60b81f8b0c5d376226a44e
-      expirationMs: 60000
-      refreshExpirationMs: 120000
+      expirationMs: 20000
+      refreshExpirationMs: 60000
 
 #  ZWxlbWVudGFyeXNjaG9vbG1hbmFnZW1lbnRzeXN0ZW0=

@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<ProblemDetail> handleNoRecordFoundException(NotFoundException exception) {
+    public ResponseEntity<ProblemDetail> handleNotFoundException(NotFoundException exception) {
 
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.NOT_FOUND, exception.getMessage());
 
@@ -37,27 +37,18 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(problemDetail, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(ExpiredJwtException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<ProblemDetail> handleExpiredJwtException(ExpiredJwtException exception) {
-
-        ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.BAD_REQUEST, exception.getMessage());
-
-        return new ResponseEntity<>(problemDetail, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(AccessDeniedException.class)
+    @ExceptionHandler(JwtException.class)
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
-    public ResponseEntity<ProblemDetail> handleAccessDeniedException(AccessDeniedException exception) {
+    public ResponseEntity<ProblemDetail> handleJwtException(JwtException exception) {
 
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.UNAUTHORIZED, exception.getMessage());
 
         return new ResponseEntity<>(problemDetail, HttpStatus.UNAUTHORIZED);
     }
 
-    @ExceptionHandler(JwtException.class)
+    @ExceptionHandler(AccessDeniedException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
-    public ResponseEntity<ProblemDetail> handleJwtException(JwtException exception) {
+    public ResponseEntity<ProblemDetail> handleAccessDeniedException(AccessDeniedException exception) {
 
         ProblemDetail problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.FORBIDDEN, exception.getMessage());
 

@@ -34,7 +34,6 @@ public class AppSecurityFilterChain {
     private final AuthenticationProvider authenticationProvider;
 
     @Bean
-    @Order(2)
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity
@@ -45,7 +44,6 @@ public class AppSecurityFilterChain {
                             CorsConfiguration corsConfiguration = new CorsConfiguration();
                             corsConfiguration.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
                             corsConfiguration.setAllowedMethods(Collections.singletonList("*"));
-                            corsConfiguration.setAllowCredentials(true);
                             corsConfiguration.setAllowedHeaders(Collections.singletonList("*"));
                             corsConfiguration.setExposedHeaders(List.of("Authorization"));
 
